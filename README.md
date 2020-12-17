@@ -9,7 +9,3 @@ Currently contians functionality to:
 * Capturing Images
 
 ---
-
-Screenshot for the UI:
-![IMAGE](./images/sc1)
-
