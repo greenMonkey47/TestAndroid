@@ -26,6 +26,12 @@ import java.util.SimpleTimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
+    static {
+        System.loadLibrary("native-lib");
+    }
+
+    public native int Jniint();
+
     final int REQUEST_IMAGE_CAPTURE=1;
     String imagePath;
     Context cnt;
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Button file_dir = (Button) findViewById(R.id.btnDirectory);
         cnt = this;
 
-
+        // Directory Button onclick
         file_dir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,9 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
                 send_file.putExtra("FILE_PATH",main_file.getAbsolutePath());
                 startActivity(send_file);
+                Log.d("CHECK", "onClick: "+Jniint());
 
             }
         });
+        // ! Directory Button onclick
+
+        // --------------- Add Button onclick START ------------------------
 
         addbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 int n2 = Integer.parseInt(num2.getText().toString());
 
                 result.setText( (n1+n2)+"");
+
+
             }
         });
+
+        // --------------- Add Button onclick END------------------------
 
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
